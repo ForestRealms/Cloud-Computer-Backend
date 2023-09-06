@@ -5,5 +5,5 @@ openstack:  # 和OpenStack有关的配置
   admin-project: "admin"
   admin-domain: "Default"
 server:
-  address: "127.0.0.1"
+  address: "0.0.0.0"
   port: 80

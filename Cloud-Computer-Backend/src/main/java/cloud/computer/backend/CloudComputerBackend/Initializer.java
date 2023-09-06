@@ -1,6 +1,5 @@
 package cloud.computer.backend.CloudComputerBackend;
 
-import org.openstack4j.api.exceptions.AuthenticationException;
 import org.openstack4j.model.common.Identifier;
 import org.openstack4j.openstack.OSFactory;
 import org.springframework.beans.factory.annotation.Value;
