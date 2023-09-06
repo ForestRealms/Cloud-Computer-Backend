@@ -1,0 +1,9 @@
+openstack:  # 和OpenStack有关的配置
+  keystone-url: "http://10.2.3.4:5000/v3"
+  admin-user-id: "f39040c33d3b4e09bcad1e305b9b02e7" # 管理员用户ID，而非用户名
+  admin-user-password: "openstack2023" # 管理员用户的密码
+  admin-project: "admin"
+  admin-domain: "Default"
+server:
+  address: "127.0.0.1"
+  port: 80
