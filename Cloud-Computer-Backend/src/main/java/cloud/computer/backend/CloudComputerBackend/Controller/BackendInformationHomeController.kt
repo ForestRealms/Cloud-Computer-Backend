@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class BackendInformationHomeController() {
-    var SYSTEM_INFORMATION : JSONObject = JSONObject();
+    private var SYSTEM_INFORMATION : JSONObject = JSONObject();
 
     init {
         SYSTEM_INFORMATION["系统名称"] = "云电脑后端应用程序"
@@ -18,7 +18,8 @@ class BackendInformationHomeController() {
         SYSTEM_INFORMATION["Java版本"] = JAVA_VERSION
         SYSTEM_INFORMATION["CPU核心数"] = NUMBER_OF_CPU_CORE
     }
-    
+
+
     @GetMapping("/")
     fun home(): JSONObject {
         return this.SYSTEM_INFORMATION;
