@@ -9,7 +9,7 @@ server:
   port: 80
 spring:
   cassandra:
-    contact-points: 127.0.0.1
+    contact-points: 10.2.240.1
     port: 9042
     keyspace-name: openstack
     username: ""
