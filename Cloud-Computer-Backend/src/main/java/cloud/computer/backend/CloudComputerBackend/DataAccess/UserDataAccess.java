@@ -1,6 +1,8 @@
 package cloud.computer.backend.CloudComputerBackend.DataAccess;
 
 import cloud.computer.backend.CloudComputerBackend.Entity.User;
+import com.datastax.oss.driver.api.core.cql.SimpleStatement;
+import com.datastax.oss.driver.api.core.cql.StatementBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.repository.Query;
@@ -47,5 +49,10 @@ public class UserDataAccess {
             if(user.getId().compareTo(max) > 0) max = user.getId();
         }
         return max;
+    }
+
+    public void updateUser(User user){
+        this.cassandraTemplate.update(user);
+
     }
 }

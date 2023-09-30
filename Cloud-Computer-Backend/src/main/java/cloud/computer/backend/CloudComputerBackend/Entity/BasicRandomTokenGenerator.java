@@ -11,7 +11,7 @@ public class BasicRandomTokenGenerator implements RandomTokenGenerator{
 
 
     private int length = 128;
-    private SecureRandom secureRandom;
+
 
     public int getLength() {
         return length;
@@ -23,7 +23,7 @@ public class BasicRandomTokenGenerator implements RandomTokenGenerator{
 
     @Override
     public String generate() {
-        this.secureRandom.reseed();
+        SecureRandom secureRandom = new SecureRandom();
         byte[] token = new byte[length];
         secureRandom.nextBytes(token);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(token);

@@ -1,9 +1,7 @@
 package cloud.computer.backend.CloudComputerBackend.Services;
 
 import cloud.computer.backend.CloudComputerBackend.DataAccess.UserDataAccess;
-import cloud.computer.backend.CloudComputerBackend.Entity.LoginResult;
-import cloud.computer.backend.CloudComputerBackend.Entity.RegisterResult;
-import cloud.computer.backend.CloudComputerBackend.Entity.User;
+import cloud.computer.backend.CloudComputerBackend.Entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -18,6 +16,8 @@ public class AuthenticationService implements IAuthenticationService{
 
     private Environment environment;
 
+    private RandomTokenGenerator randomTokenGenerator;
+
     @Autowired
     private void setUserDataAccess(UserDataAccess userDataAccess) {
         this.userDataAccess = userDataAccess;
@@ -27,6 +27,13 @@ public class AuthenticationService implements IAuthenticationService{
     private void setEnvironment(Environment environment) {
         this.environment = environment;
     }
+
+    @Autowired
+    public void setRandomTokenGenerator(BasicRandomTokenGenerator basicRandomTokenGenerator) {
+        this.randomTokenGenerator = basicRandomTokenGenerator;
+    }
+
+
 
     /**
      * 登录功能
@@ -52,6 +59,10 @@ public class AuthenticationService implements IAuthenticationService{
         }else {
             result.setResult(LoginResult.SUCCESS);
             result.setMessage(this.environment.getProperty("language.user.SuccessfulLogin"));
+            String s = this.randomTokenGenerator.generate();
+            user.setTokenValue(s);
+            result.setTokenValue(s);
+            this.userDataAccess.updateUser(user);
         }
         return result;
     }
