@@ -20,3 +20,6 @@ spring:
       enabled: true
   config:
     import: file:/cloud-computer-backend/Cloud-Computer-Backend/src/main/resources/language.yml
+
+token:
+  duration: 7

@@ -1,22 +1,31 @@
 package cloud.computer.backend.CloudComputerBackend.Services;
 
+import cloud.computer.backend.CloudComputerBackend.DataAccess.TokenDataAccess;
 import cloud.computer.backend.CloudComputerBackend.DataAccess.UserDataAccess;
 import cloud.computer.backend.CloudComputerBackend.Entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 @Service
 public class AuthenticationService implements IAuthenticationService{
 
     private UserDataAccess userDataAccess;
 
+    private TokenDataAccess tokenDataAccess;
+
     private Environment environment;
 
     private RandomTokenGenerator randomTokenGenerator;
+
+    @Value("${token.duration}")
+    private int duration_days;
 
     @Autowired
     private void setUserDataAccess(UserDataAccess userDataAccess) {
@@ -29,11 +38,14 @@ public class AuthenticationService implements IAuthenticationService{
     }
 
     @Autowired
-    public void setRandomTokenGenerator(BasicRandomTokenGenerator basicRandomTokenGenerator) {
+    private void setRandomTokenGenerator(BasicRandomTokenGenerator basicRandomTokenGenerator) {
         this.randomTokenGenerator = basicRandomTokenGenerator;
     }
 
-
+    @Autowired
+    private void setTokenDataAccess(TokenDataAccess tokenDataAccess) {
+        this.tokenDataAccess = tokenDataAccess;
+    }
 
     /**
      * 登录功能
@@ -60,9 +72,16 @@ public class AuthenticationService implements IAuthenticationService{
             result.setResult(LoginResult.SUCCESS);
             result.setMessage(this.environment.getProperty("language.user.SuccessfulLogin"));
             String s = this.randomTokenGenerator.generate();
+            Token token = new Token();
+            token.setValue(s);
+            Calendar calendar = Calendar.getInstance(Locale.CHINA);
+            calendar.add(Calendar.DATE, this.duration_days);
+            token.setExpiration(calendar.getTime());
+            this.tokenDataAccess.addToken(token);
             user.setTokenValue(s);
             result.setTokenValue(s);
             this.userDataAccess.updateUser(user);
+
         }
         return result;
     }
@@ -93,7 +112,6 @@ public class AuthenticationService implements IAuthenticationService{
             result.setMessage("language.user.RegisterSuccessfully");
             LoginResult loginResult = this.login(username, password);
             result.setTokenValue(loginResult.getTokenValue());
-
         }
 
         return result;

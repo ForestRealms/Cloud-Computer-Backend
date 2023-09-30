@@ -8,12 +8,13 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.util.Date;
 
-@Table
 @Getter
 @Setter
+@Table("tokens")
 public class Token {
 
-    @Column("value")
+
+    @PrimaryKey("value")
     private String value;
 
     @Column("expired_at")
