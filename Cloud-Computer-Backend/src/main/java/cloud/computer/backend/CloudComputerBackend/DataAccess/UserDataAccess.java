@@ -18,7 +18,7 @@ public class UserDataAccess {
     private CassandraTemplate cassandraTemplate;
 
     @Autowired
-    public void setCassandraTemplate(CassandraTemplate cassandraTemplate) {
+    private void setCassandraTemplate(CassandraTemplate cassandraTemplate) {
         this.cassandraTemplate = cassandraTemplate;
     }
 
