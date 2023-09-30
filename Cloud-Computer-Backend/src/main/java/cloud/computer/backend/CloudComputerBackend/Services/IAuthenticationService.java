@@ -1,5 +1,7 @@
 package cloud.computer.backend.CloudComputerBackend.Services;
 
+import cloud.computer.backend.CloudComputerBackend.Entity.AuthenticationResult;
+import cloud.computer.backend.CloudComputerBackend.Entity.LoginResult;
 import com.alibaba.fastjson2.JSONObject;
 
 public interface IAuthenticationService {
@@ -9,7 +11,7 @@ public interface IAuthenticationService {
      * @param password 密码
      * @return 处理结果
      */
-    JSONObject login(String username, String password);
+    AuthenticationResult login(String username, String password);
 
     /**
      * 注册功能
@@ -17,5 +19,5 @@ public interface IAuthenticationService {
      * @param password 密码
      * @return 处理结果
      */
-    JSONObject register(String username, String password);
+    AuthenticationResult register(String username, String password);
 }

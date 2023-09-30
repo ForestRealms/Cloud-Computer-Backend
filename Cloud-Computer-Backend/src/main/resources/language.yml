@@ -1,0 +1,7 @@
+language:
+  user:
+    UserNotFound: "未找到用户"
+    InvalidCredentials: "无效的用户名或密码"
+    SuccessfulLogin: "登录成功"
+    UserAlreadyExists: "用户名已存在"
+    RegisterSuccessfully: "注册成功"

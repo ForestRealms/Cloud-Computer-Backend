@@ -7,3 +7,16 @@ openstack:  # 和OpenStack有关的配置
 server:
   address: "0.0.0.0"
   port: 80
+spring:
+  cassandra:
+    contact-points: 127.0.0.1
+    port: 9042
+    keyspace-name: openstack
+    username: ""
+    password: ""
+  devtools:
+    livereload:
+      port: 12345
+      enabled: true
+  config:
+    import: file:/cloud-computer-backend/Cloud-Computer-Backend/src/main/resources/language.yml

@@ -1,8 +1,14 @@
 package cloud.computer.backend.CloudComputerBackend;
 
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.CqlSessionBuilder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.openstack4j.model.common.Identifier;
 import org.openstack4j.openstack.OSFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
+import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -54,6 +60,10 @@ public class Initializer {
         }
 
     }
+
+
+
+
 
 
 }

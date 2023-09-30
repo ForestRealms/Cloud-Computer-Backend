@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {CassandraAutoConfiguration.class})
 public class CloudComputerBackendApplication {
 	public static ConfigurableApplicationContext context;
 	public static Logger logger = LoggerFactory.getLogger(CloudComputerBackendApplication.class);
@@ -30,6 +32,7 @@ public class CloudComputerBackendApplication {
 		}else {
 			logger.info("初始化失败");
 		}
+
 
 	}
 
