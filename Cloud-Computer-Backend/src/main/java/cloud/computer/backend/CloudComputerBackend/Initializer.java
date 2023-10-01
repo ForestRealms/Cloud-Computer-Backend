@@ -3,6 +3,7 @@ package cloud.computer.backend.CloudComputerBackend;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.openstack4j.api.OSClient;
 import org.openstack4j.model.common.Identifier;
 import org.openstack4j.openstack.OSFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,6 +59,16 @@ public class Initializer {
         }catch (Exception e){
             return false;
         }
+
+    }
+
+    @Bean(name = "client")
+    public OSClient.OSClientV3 getClient(){
+        return OSFactory.builderV3()
+                .endpoint(KEYSTONE_URL)
+                .credentials(userid, password)
+                .scopeToProject(Identifier.byName(ADMIN_PROJECT), Identifier.byName(ADMIN_DOMAIN))
+                .authenticate();
 
     }
 

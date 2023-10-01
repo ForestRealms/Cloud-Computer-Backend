@@ -11,9 +11,16 @@ class CloudComputerBackendApplicationTests {
 
 	private AuthenticationService authenticationService;
 
+	private CloudDesktopService cloudDesktopService;
+
 	@Autowired
 	public void setAuthenticationService(AuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
+	}
+
+	@Autowired
+	public void setCloudDesktopService(CloudDesktopService cloudDesktopService) {
+		this.cloudDesktopService = cloudDesktopService;
 	}
 
 	@Test
@@ -25,6 +32,26 @@ class CloudComputerBackendApplicationTests {
 		RegisterResult result = this.authenticationService.register("testuser", "111111");
 		System.out.println(result.getResult());
 		System.out.println(result.getMessage());
+	}
+
+	@Test
+	public void getAllServers(){
+		System.out.println(this.cloudDesktopService.getServerList());
+	}
+
+	@Test
+	public void startupServer(){
+		this.cloudDesktopService.startup("instance-00000028");
+	}
+
+	@Test
+	public void stopServer(){
+		this.cloudDesktopService.shutdown("instance-00000028");
+	}
+
+	@Test
+	public void getPowerStatus(){
+		System.out.println(this.cloudDesktopService.getPowerStatus("instance-00000028"));
 	}
 
 

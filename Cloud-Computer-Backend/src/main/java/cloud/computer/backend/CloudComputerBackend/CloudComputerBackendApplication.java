@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication(exclude = {CassandraAutoConfiguration.class})
@@ -27,6 +28,7 @@ public class CloudComputerBackendApplication {
 	public static void main(String[] args) {
 		context = SpringApplication.run(CloudComputerBackendApplication.class, args);
 		Initializer initializer = context.getBean(Initializer.class);
+		client = context.getBean(OSClient.OSClientV3.class);
 		if (initializer.initialize()) {
 			logger.info("初始化成功");
 		}else {
@@ -35,6 +37,8 @@ public class CloudComputerBackendApplication {
 
 
 	}
+
+
 
 
 
