@@ -1,6 +1,7 @@
 package cloud.computer.backend.CloudComputerBackend.Services;
 
-import org.openstack4j.common.Buildable;
+import org.openstack4j.model.ModelEntity;
+import org.openstack4j.model.compute.Server;
 
 import java.util.List;
 
@@ -14,14 +15,14 @@ public interface Manageable<T> {
      * 创建被管理的类型的对象
      * 例如：如果泛型<code>T</code>表示Server，则此函数应当
      * 实现对于Server对象在OpenStack中创建的过程
-     * @param build 可构建的对象
+     * @param model 可构建的对象
      */
-    void create(Buildable<T> build);
+    void create(ModelEntity model);
 
     /**
      * 删除被管理的类型的对象
      * @param Id 对象的ID
      */
     void delete(String Id);
-    List<T> list();
+    List<? extends T> list();
 }

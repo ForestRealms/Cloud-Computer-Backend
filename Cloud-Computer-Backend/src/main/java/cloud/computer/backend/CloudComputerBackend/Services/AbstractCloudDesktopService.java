@@ -18,10 +18,13 @@ package cloud.computer.backend.CloudComputerBackend.Services;
 
 import org.openstack4j.model.compute.Flavor;
 import org.openstack4j.model.compute.Server;
+import org.openstack4j.model.compute.builder.ServerCreateBuilder;
 
 import javax.annotation.Nullable;
 
-
+/**
+ * {@inheritDoc}
+ */
 public abstract class AbstractCloudDesktopService implements Manageable<Server>, Networkable{
     /**
      * 启动一个云电脑
@@ -42,6 +45,12 @@ public abstract class AbstractCloudDesktopService implements Manageable<Server>,
      * @param instance 要重启的云电脑
      */
     public abstract void reboot(Server instance);
+
+    /**
+     * 强制重新启动一个云电脑
+     * @param instance 要强制重启的云电脑
+     */
+    public abstract void forceReboot(Server instance);
 
     /**
      * 挂起一台云电脑

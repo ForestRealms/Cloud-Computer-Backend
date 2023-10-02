@@ -2,6 +2,7 @@ package cloud.computer.backend.CloudComputerBackend;
 
 import cloud.computer.backend.CloudComputerBackend.Entity.RegisterResult;
 import cloud.computer.backend.CloudComputerBackend.Services.AuthenticationService;
+import cloud.computer.backend.CloudComputerBackend.Services.CloudDesktopService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,25 +35,8 @@ class CloudComputerBackendApplicationTests {
 		System.out.println(result.getMessage());
 	}
 
-	@Test
-	public void getAllServers(){
-		System.out.println(this.cloudDesktopService.getServerList());
-	}
 
-	@Test
-	public void startupServer(){
-		this.cloudDesktopService.startup("instance-00000028");
-	}
 
-	@Test
-	public void stopServer(){
-		this.cloudDesktopService.shutdown("instance-00000028");
-	}
-
-	@Test
-	public void getPowerStatus(){
-		System.out.println(this.cloudDesktopService.getPowerStatus("instance-00000028"));
-	}
 
 
 
