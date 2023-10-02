@@ -2,6 +2,7 @@
   <settings default="CR">
     <module2copyright>
       <element module="All" copyright="CR" />
+      <element module="Open Files" copyright="CR" />
     </module2copyright>
   </settings>
 </component>
