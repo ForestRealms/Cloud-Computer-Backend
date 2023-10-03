@@ -27,16 +27,18 @@ import java.util.List;
 
 /**
  * 具体提供云桌面服务逻辑的类，完全实现 {@link AbstractCloudDesktopService} 的所有方法。
+ *
  * @author 等陌上花开
  * @see cloud.computer.backend.CloudComputerBackend.Services.AbstractCloudDesktopService
  * @see cloud.computer.backend.CloudComputerBackend.Services.Manageable
  * @see cloud.computer.backend.CloudComputerBackend.Services.Networkable
  */
 @Service
-public class CloudDesktopService extends AbstractCloudDesktopService{
+public class CloudDesktopService extends AbstractCloudDesktopService {
 
     private final OSClient.OSClientV3 client;
     private final ServerService serverService;
+
     private CloudDesktopService(OSClient.OSClientV3 client) {
         this.client = client;
         this.serverService = this.client.compute().servers();
@@ -44,6 +46,7 @@ public class CloudDesktopService extends AbstractCloudDesktopService{
 
     /**
      * {@inheritDoc}
+     *
      * @param instance 要启动的云电脑实例
      */
     @Override
@@ -53,6 +56,7 @@ public class CloudDesktopService extends AbstractCloudDesktopService{
 
     /**
      * {@inheritDoc}
+     *
      * @param instance 要停止的云电脑实例
      */
     @Override
@@ -89,7 +93,7 @@ public class CloudDesktopService extends AbstractCloudDesktopService{
     @Override
     protected Server getServerById(String Id) {
         for (Server server : this.serverService.list()) {
-            if(server.getId().equals(Id)) return server;
+            if (server.getId().equals(Id)) return server;
         }
         return null;
     }
@@ -98,7 +102,7 @@ public class CloudDesktopService extends AbstractCloudDesktopService{
     @Override
     protected Server getServerByInstanceName(String InstanceName) {
         for (Server server : this.serverService.list()) {
-            if(server.getInstanceName().equals(InstanceName)) return server;
+            if (server.getInstanceName().equals(InstanceName)) return server;
         }
         return null;
     }
@@ -120,7 +124,7 @@ public class CloudDesktopService extends AbstractCloudDesktopService{
     }
 
     @Override
-    public String  getIPv4Address(ModelEntity entity) {
+    public String getIPv4Address(ModelEntity entity) {
         return ((Server) entity).getAccessIPv4();
     }
 }

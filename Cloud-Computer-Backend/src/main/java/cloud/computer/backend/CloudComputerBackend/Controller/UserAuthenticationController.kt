@@ -1,7 +1,5 @@
 package cloud.computer.backend.CloudComputerBackend.Controller
 
-import cloud.computer.backend.CloudComputerBackend.DataAccess.UserDataAccess
-import cloud.computer.backend.CloudComputerBackend.Entity.AuthenticationResult
 import cloud.computer.backend.CloudComputerBackend.Entity.LoginResult
 import cloud.computer.backend.CloudComputerBackend.Services.AuthenticationService
 import com.alibaba.fastjson2.JSONObject

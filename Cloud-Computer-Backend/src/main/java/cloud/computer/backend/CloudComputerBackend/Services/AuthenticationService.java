@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 @Service
-public class AuthenticationService implements IAuthenticationService{
+public class AuthenticationService implements IAuthenticationService {
 
     private UserDataAccess userDataAccess;
 
@@ -50,6 +50,7 @@ public class AuthenticationService implements IAuthenticationService{
     /**
      * 登录功能
      * 用户名和项目名称是相同的
+     *
      * @param username 用户名
      * @param password 密码
      * @return 处理结果
@@ -68,7 +69,7 @@ public class AuthenticationService implements IAuthenticationService{
             result.setResult(LoginResult.INVALID_CREDENTIALS);
             result.setMessage(this.environment.getProperty("language.user.InvalidCredentials"));
             result.setTokenValue(null);
-        }else {
+        } else {
             result.setResult(LoginResult.SUCCESS);
             result.setMessage(this.environment.getProperty("language.user.SuccessfulLogin"));
             String s = this.randomTokenGenerator.generate();
@@ -101,7 +102,7 @@ public class AuthenticationService implements IAuthenticationService{
             result.setResult(RegisterResult.USER_ALREADY_EXISTS);
             result.setMessage(this.environment.getProperty("language.user.UserAlreadyExists"));
             result.setTokenValue(null);
-        }else {
+        } else {
             User user = new User();
             user.setId(this.userDataAccess.getMaximumUserId().add(BigInteger.ONE));
             user.setUsername(username);
