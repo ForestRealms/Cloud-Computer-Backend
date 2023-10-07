@@ -38,10 +38,9 @@ public class FlavorService extends AbstractFlavorService {
     private final OSClient.OSClientV3 client;
     private final org.openstack4j.api.compute.FlavorService flavorService;
 
-    public FlavorService(OSClient.OSClientV3 client) {
+    private FlavorService(OSClient.OSClientV3 client) {
         this.client = client;
         this.flavorService = this.client.compute().flavors();
-
     }
 
     @Override
