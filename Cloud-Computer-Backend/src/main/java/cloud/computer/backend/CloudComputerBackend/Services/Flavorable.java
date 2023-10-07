@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * @author 等陌上花开
  */
-public interface Flavorable extends Manageable<Flavor>{
+public interface Flavorable {
 
     @Nullable
     Flavor getFlavorById(String FlavorId);

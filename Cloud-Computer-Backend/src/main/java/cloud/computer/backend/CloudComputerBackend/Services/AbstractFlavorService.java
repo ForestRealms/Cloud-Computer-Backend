@@ -20,10 +20,11 @@ import org.openstack4j.model.compute.Flavor;
 /**
  * @author 等陌上花开
  */
-public abstract class AbstractFlavorService implements Flavorable{
+public abstract class AbstractFlavorService implements Flavorable, Manageable<Flavor> {
 
     /**
      * 查询某实例规格的CPU核心数量
+     *
      * @param flavor 要查询实例规格的对象实体
      * @return 该实例规格的CPU核心数
      */
@@ -31,6 +32,7 @@ public abstract class AbstractFlavorService implements Flavorable{
 
     /**
      * 查询某实例规格的运行内存容量
+     *
      * @param flavor 要查询的实例规格的对象实体
      * @return 本地磁盘的容量，单位是MB
      */
@@ -38,6 +40,7 @@ public abstract class AbstractFlavorService implements Flavorable{
 
     /**
      * 查询某实例规格的硬盘容量
+     *
      * @param flavor 要查询的实例规格的对象实体
      * @return 本地磁盘的容量，单位是GB
      */
@@ -45,6 +48,7 @@ public abstract class AbstractFlavorService implements Flavorable{
 
     /**
      * 查询某实例规格是否为公共规格
+     *
      * @param flavor 要查询的实例规格的对象实体
      * @return 如果是公共规格，则返回{@code true}，否则返回{@code false}
      */
@@ -52,6 +56,7 @@ public abstract class AbstractFlavorService implements Flavorable{
 
     /**
      * 查询某实例规格是否为不可用状态
+     *
      * @param flavor 要查询的实例规格的对象实体
      * @return 如果该规格处于不可用状态，则返回{@code true}，否则返回{@code false}
      */

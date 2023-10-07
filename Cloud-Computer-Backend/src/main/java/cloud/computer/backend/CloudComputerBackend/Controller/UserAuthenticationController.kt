@@ -1,6 +1,5 @@
 package cloud.computer.backend.CloudComputerBackend.Controller
 
-
 import cloud.computer.backend.CloudComputerBackend.Entity.LoginResult
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestParam

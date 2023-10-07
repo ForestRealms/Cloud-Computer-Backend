@@ -16,21 +16,19 @@
 package cloud.computer.backend.CloudComputerBackend.Services;
 
 import org.openstack4j.model.ModelEntity;
-import org.openstack4j.model.compute.Server;
-
-import java.net.Inet4Address;
 
 /**
  * 任何需要连接网络才可以工作的实体服务应当实现此接口
+ *
  * @author 等陌上花开
  * @see Manageable
  * @since 1.0
- *
  */
 public interface Networkable {
 
     /**
      * 获取一个实体的IPv4地址
+     *
      * @param entity 要获取IPv4地址的实体
      * @return IPv4地址
      */
