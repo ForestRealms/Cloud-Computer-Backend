@@ -109,7 +109,7 @@ public class AuthenticationService implements IAuthenticationService{
             user.setInstances(new ArrayList<>());
             this.userDataAccess.addUser(user);
             result.setResult(RegisterResult.REGISTER_SUCCESSFULLY);
-            result.setMessage("language.user.RegisterSuccessfully");
+            result.setMessage(this.environment.getProperty("language.user.RegisterSuccessfully"));
             LoginResult loginResult = this.login(username, password);
             result.setTokenValue(loginResult.getTokenValue());
         }

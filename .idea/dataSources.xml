@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:cassandra://10.2.240.1:9042</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="10.2.240.1" uuid="3369b08a-8540-43dd-a674-c7b2b92fdfc1">
+      <driver-ref>cassandra</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.dbschema.CassandraJdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:cassandra://10.2.240.1:9042</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
